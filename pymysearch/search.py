@@ -11,7 +11,7 @@ class SearchBackendType(Enum):
 class SearchClient:
     def __init__(
         self,
-        search_backend: SearchBackendType = SearchBackendType.DUCKDUCKGO,
+        search_backend: Optional[str] = 'duckduckgo',
         search_service: Optional[BaseSearchService] = None,
     ):
         self.search_backend = search_backend
@@ -22,7 +22,7 @@ class SearchClient:
         )
 
     def init_search_service(self, search_backend):
-        if search_backend == SearchBackendType.DUCKDUCKGO:
+        if search_backend == SearchBackendType.DUCKDUCKGO.value:
             return DuckDuckGoSearchService()
         else:
             raise ValueError("Search Backend is not valid.")
