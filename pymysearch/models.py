@@ -6,6 +6,7 @@ from typing import List
 class Result:
     url: str
     content: str
+    raw_content: str
 
 
 @dataclass
