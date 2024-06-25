@@ -9,7 +9,7 @@ pip install git+https://github.com/pnhuy/pymysearch
 
 ## Usage
 
-## Search
+### Search
 
 ```python
 from pymysearch.search import SearchClient
@@ -21,7 +21,7 @@ for res in results:
     print(res.content[:10])
 ```
 
-## Q&A with Search
+### Q&A with Search
 
 Give a quick answer based on search results:
 
@@ -46,7 +46,7 @@ print(client.qna_search("What is the capital of Vietnam?"))
 # => The capital of Vietnam is Hanoi.
 ```
 
-You might want to custom the prompt to change the output:
+You can customize the prompt to change the output:
 
 ```python
 from langchain_core.prompts import PromptTemplate
