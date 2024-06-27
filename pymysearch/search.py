@@ -2,7 +2,7 @@ from enum import Enum
 from typing import Optional
 
 from langchain_core.prompts import PromptTemplate
-from langchain_core.language_models.chat_models import BaseChatModel
+from langchain_core.language_models.chat_models import BaseLanguageModel
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.vectorstores import VectorStore
@@ -22,7 +22,7 @@ class SearchClient:
         self,
         search_service_name: Optional[str] = "duckduckgo",
         search_service: Optional[BaseSearchService] = None,
-        llm: Optional[BaseChatModel] = None,
+        llm: Optional[BaseLanguageModel] = None,
         text_splitter: Optional[object] = None,
         vectorstore: Optional[VectorStore] = None,
     ):
