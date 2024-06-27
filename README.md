@@ -33,6 +33,11 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from pymysearch.search import SearchClient
 
+# you should config OPENAI_API_KEY
+# os.environ['OPENAI_API_KEY'] = 'sk-xxx'
+# or using other OpenAI compatible local model
+llm = ChatOpenAI(model_name="gpt-3.5-turbo")
+
 client = SearchClient(
     llm=llm,
     text_splitter=RecursiveCharacterTextSplitter(chunk_size=5000, chunk_overlap=500),
