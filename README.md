@@ -70,3 +70,36 @@ Answer:""")
 print(client.qna_search("What is the capital of Vietnam?", prompt=prompt))
 # => The capital of Vietnam is Hanoi. Hanoi is the second-largest city in Vietnam by population...
 ```
+
+If you want to use another LLM instead of OpenAI, please make sure that that model support function calls.
+Please see more at [Berkeley Function-Calling Leaderboard](https://gorilla.cs.berkeley.edu/leaderboard.html).
+The prompt should be taylored for each model.
+
+```python
+from langchain_community.llms.ollama import Ollama
+
+llm = Ollama(model='llama3')
+client = SearchClient(
+    llm=llm,
+    text_splitter=RecursiveCharacterTextSplitter(chunk_size=5000, chunk_overlap=500),
+    vectorstore=Chroma(
+        persist_directory="./chroma_db",
+        embedding_function=HuggingFaceEmbeddings(),
+    ),
+)
+
+prompt = PromptTemplate.from_template("""You are an assistant for question-answering tasks.
+
+Context:
+{context}
+
+Use the following pieces of retrieved context to answer the question.
+If you don't know the answer, just say that you don't know.
+Make the answer consise.
+                                      
+Question: {question}
+""")
+
+print(client.qna_search("What is the capital of Vietnam?", prompt=prompt))
+# => Hanoi
+```
