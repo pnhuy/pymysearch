@@ -71,9 +71,9 @@ print(client.qna_search("What is the capital of Vietnam?", prompt=prompt))
 # => The capital of Vietnam is Hanoi. Hanoi is the second-largest city in Vietnam by population...
 ```
 
-If you want to use another LLM instead of OpenAI, please make sure that that model support function calls.
+If you want to use another LLM instead of OpenAI, please make sure that that model supports function calls.
 Please see more at [Berkeley Function-Calling Leaderboard](https://gorilla.cs.berkeley.edu/leaderboard.html).
-The prompt should be taylored for each model.
+The prompt should be tailored for each model.
 
 ```python
 from langchain_community.llms.ollama import Ollama
